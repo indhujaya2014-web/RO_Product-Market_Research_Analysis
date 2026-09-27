@@ -1,21 +1,36 @@
-# RO Product & Market Research Analysis – India
+# 💧RO Product & Market Research Analysis – India
 
 ## Project Overview
 
 **RO Product & Market Research Analysis** is a data analytics and market intelligence project focused on industrial and commercial Reverse Osmosis (RO) products available in India.
 
-The project combines publicly available product research with **Python, Pandas, Excel, and Power BI** to benchmark RO systems based on capacity, price, manufacturer/supplier, technical specifications, applications, and location.
+The project combines publicly available product research with **Python, Pandas, NumPy, Streamlit, Excel, and Power BI** to research products, compare pricing and capacity, analyze manufacturers/suppliers, and identify potential market opportunities.
 
 ### Objectives
 
-- Identify commonly available RO capacities.
+- Identify common RO capacities in the Indian market.
 - Analyze price variation by capacity.
 - Compare price per LPH.
 - Compare manufacturers and suppliers.
 - Analyze disclosed technical specifications.
 - Identify potential Indian OEM/manufacturing candidates.
 - Identify market gaps and possible opportunities.
-- Present findings through an interactive Power BI dashboard.
+- Present findings through an interactive Streamlit dashboard and Power BI dashboard.
+
+---
+
+## Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| Python | Data processing and analysis |
+| Pandas | Data cleaning and aggregation |
+| NumPy | Numerical operations and capacity bands |
+| Streamlit | Interactive dashboard |
+| Excel | Research and analytical workbook |
+| Power BI | Business intelligence dashboard |
+| DAX | Power BI calculations |
+| Git/GitHub | Version control |
 
 ---
 
@@ -55,8 +70,35 @@ RO-Product-Market-Research/
 ├── ro_market_analysis.py
 ├── RO_Product_Market_Research_Report.docx
 ├── RO_Product_Market_Research_PowerBI_Ready.zip
-└── README_RO_Product_Market_Research.md
+├── README_RO_Product_Market_Research.md
+│
+└── ro_analysis_outputs/
+    ├── capacity_summary.csv
+    ├── manufacturer_summary.csv
+    └── ro_research_analysis_ready.csv
 ```
+
+---
+
+# 🚀 Streamlit Interactive Dashboard
+
+The main application is:
+
+```text
+ro_market_analysis.py
+```
+
+Run it with:
+
+```bash
+streamlit run ro_market_analysis.py
+```
+
+The dashboard title is:
+
+> **💧 Indian Commercial & Industrial RO Market Research Analysis**
+
+The application provides an interactive business intelligence interface for evaluating product specifications, pricing trends, capacity distribution, and manufacturer positioning.
 
 ---
 
@@ -137,58 +179,6 @@ These are **publicly listed prices from the research sample**, not official indu
 
 ---
 
-# Python Analysis
-
-Main script:
-
-```text
-ro_market_analysis.py
-```
-
-Core libraries:
-
-```python
-pandas
-numpy
-matplotlib
-```
-
-The script generates:
-
-- Capacity analysis
-- Price analysis
-- Manufacturer comparison
-- Price-per-LPH analysis
-- Correlation analysis
-- Specification completeness
-- Visualization charts
-
-Example:
-
-```python
-import pandas as pd
-
-df = pd.read_csv("RO_Product_Market_Research_Clean.csv")
-
-df["Price per LPH (INR)"] = (
-    df["Price (INR)"] / df["RO Capacity (LPH)"]
-)
-
-summary = (
-    df.groupby("Capacity Range")
-      .agg(
-          Products=("Product/Model", "count"),
-          Average_Price=("Price (INR)", "mean"),
-          Median_Price=("Price (INR)", "median")
-      )
-      .reset_index()
-)
-
-print(summary)
-```
-
----
-
 # Power BI Dashboard
 
 ## Dashboard Title
@@ -204,14 +194,14 @@ print(summary)
 ### KPI Cards
 
 - Total Products
-- Total Suppliers
+- Total Manufacturers/Suppliers
 - Average Price
 - Average Capacity
 - Maximum Capacity
 
 ### Visuals
 
-1. **Products by Capacity Band** – clustered column.
+1. **Products by Capacity Band** – clustered column chart.
 2. **Average Price by Capacity Band** – column chart.
 3. **Price vs Capacity** – scatter plot.
 4. **Product Mix by Capacity Band** – donut chart.
@@ -254,10 +244,6 @@ Recommended visuals:
 - Specification Completeness by Supplier
 - Product comparison table
 - Source URL table
-
-## Optional Page 4 – Product Detail
-
-Use `Product/Model` as a drill-through field and display all product specifications plus the source URL.
 
 ---
 
@@ -400,17 +386,62 @@ Important limitations:
 
 # Reproduction
 
-## Install dependencies
+# ▶️ How to Run the Project
+
+## 1. Install Python
+
+Python 3.9+ is recommended.
 
 ```bash
-pip install pandas numpy matplotlib openpyxl
+python --version
 ```
 
-## Run Python
+## 2. Install Dependencies
+
+For the Streamlit application:
 
 ```bash
-python ro_market_analysis.py
+pip install pandas numpy streamlit
 ```
+
+For the complete analytical environment:
+
+```bash
+pip install pandas numpy streamlit matplotlib openpyxl
+```
+
+## 3. Place the Dataset
+
+The application expects:
+
+```text
+RO_Product_Market_Research_Clean.csv
+```
+
+in the same working directory as:
+
+```text
+ro_market_analysis.py
+```
+
+Recommended structure:
+
+```text
+Project/
+│
+├── ro_market_analysis.py
+└── RO_Product_Market_Research_Clean.csv
+```
+
+## 4. Run Streamlit
+
+```bash
+streamlit run ro_market_analysis.py
+```
+
+The local Streamlit application will open in the browser.
+
+---
 
 ## Power BI
 
@@ -465,4 +496,4 @@ Supplier classification in this project is not a legal or commercial certificati
 **Project:** RO Product & Market Research Analysis  
 **Market:** India  
 **Category:** Industrial & Commercial Reverse Osmosis Systems  
-**Tools:** Python | Pandas | Excel | Power BI | DAX
+**Tools:** Python | Pandas | NumPy | Streamlit | Excel | Power BI | DAX
