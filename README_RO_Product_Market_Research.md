@@ -69,7 +69,7 @@ RO-Product-Market-Research/
 ├── RO_Product_Market_Research_India.xlsx
 ├── ro_market_analysis.py
 ├── RO_Product_Market_Research_Report.docx
-├── RO_Product_Market_Research_PowerBI_Ready.zip
+├── RO_Product_Market_Research_PowerBI.zip
 ├── README_RO_Product_Market_Research.md
 │
 └── ro_analysis_outputs/
